@@ -259,48 +259,10 @@ function saveItems(){
  }
 }
 
-function render(const ncertGrid = document.getElementById("ncertClasses");
-
-if (ncertGrid) {
-    ncertGrid.innerHTML = Array.from(
-        { length: 12 },
-        (_, i) => {
-            const cls = i + 1;
-
-            return `
-                <div class="ncert-card">
-                    <h3>Class ${cls}</h3>
-                    <a href="https://ncert.nic.in/textbook.php">
-                        हिंदी पुस्तकें
-                    </a>
-                    <a href="https://ncert.nic.in/textbook.php">
-                        English Books
-                    </a>
-                </div>
-            `;
-        }
-    ).join("");
-}){
- const q = $("search").value.toLowerCase().trim();
- const items = allItems().filter(x =>
-  (filter === "all" || x.category === filter) &&
-  (`${x.name || ""} ${x.batch || ""} ${x.desc || ""} ${x.category || ""}`).toLowerCase().includes(q)
- );
- $("cards").innerHTML = items.map(x => {
-  const index = allItems().indexOf(x);
-  return `<article class="card">
-   <div class="avatar">${esc(x.initial || String(x.name || "").slice(0,2).toUpperCase())}</div>
-   <div class="details"><h4>${esc(x.name)}</h4>
-    <p>${esc(x.batch)}${x.desc ? " • " + esc(x.desc) : ""}</p>
-    <div class="meta"><span class="tag">${esc(x.category)}</span>${x.content ? "<span class='tag'>Video / Notes</span>" : ""}</div>
-   </div>
-   <button class="arrow" type="button" aria-label="Open ${esc(x.name)}" onclick="openDetail(${index})">›</button>
-  </article>`;
- }).join("");
+function render(
  $("count").textContent = items.length + " platforms";
  if (!items.length) $("cards").innerHTML = '<div class="empty">No results found. Try another search or add a batch.</div>';
 }
-
 $("filters").addEventListener("click", event => {
  const button = event.target.closest("button[data-filter]");
  if (!button) return;
