@@ -153,6 +153,77 @@ const seed = [
  {name:"TARGET BOARD",batch:"School batches",category:"School",desc:"School learning platform.",initial:"TB"},
  {name:"Study IQ",batch:"Exam preparation",category:"Government Exams",desc:"Explore exam preparation.",initial:"IQ"},
  {name:"Unacademy",batch:"Learning platform",category:"JEE / NEET",desc:"Explore available courses.",initial:"UA"}
+ <section id="ncert-library">
+  <h1>📚 VIKRANT STUDY</h1>
+  <h2>NCERT E-BOOK LIBRARY</h2>
+  <p>कक्षा 1 से 12 तक की किताबें</p>
+  <p>Hindi Medium | English Medium</p>
+
+  <div class="ncert-grid" id="ncertClasses"></div>
+
+  <p class="ncert-note">
+    सभी पुस्तकें आधिकारिक NCERT वेबसाइट से पढ़ें।
+  </p>
+</section>
+
+<style>
+#ncert-library {
+  padding: 25px 15px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+#ncert-library .ncert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  gap: 15px;
+  max-width: 850px;
+  margin: 25px auto;
+}
+#ncert-library .ncert-card {
+  background: #172554;
+  color: white;
+  padding: 18px 10px;
+  border-radius: 12px;
+}
+#ncert-library .ncert-card h3 {
+  margin-top: 0;
+}
+#ncert-library .ncert-card a {
+  display: block;
+  padding: 9px;
+  margin-top: 8px;
+  background: white;
+  color: #172554;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+#ncert-library .ncert-note {
+  font-size: 14px;
+  color: #777;
+}
+</style>
+
+<script>
+const ncertBox =
+  document.getElementById("ncertClasses");
+
+for (let i = 1; i <= 12; i++) {
+  ncertBox.innerHTML += `
+    <div class="ncert-card">
+      <h3>Class ${i}</h3>
+      <a href="https://ncert.nic.in/textbook.php"
+         target="_blank">
+        हिंदी पुस्तकें
+      </a>
+      <a href="https://ncert.nic.in/textbook.php"
+         target="_blank">
+        English Books
+      </a>
+    </div>
+  `;
+}
+</script>
 ];
 
 const STORAGE_KEY = "vikrantStudyBatches";
@@ -188,7 +259,28 @@ function saveItems(){
  }
 }
 
-function render(){
+function render(const ncertGrid = document.getElementById("ncertClasses");
+
+if (ncertGrid) {
+    ncertGrid.innerHTML = Array.from(
+        { length: 12 },
+        (_, i) => {
+            const cls = i + 1;
+
+            return `
+                <div class="ncert-card">
+                    <h3>Class ${cls}</h3>
+                    <a href="https://ncert.nic.in/textbook.php">
+                        हिंदी पुस्तकें
+                    </a>
+                    <a href="https://ncert.nic.in/textbook.php">
+                        English Books
+                    </a>
+                </div>
+            `;
+        }
+    ).join("");
+}){
  const q = $("search").value.toLowerCase().trim();
  const items = allItems().filter(x =>
   (filter === "all" || x.category === filter) &&
